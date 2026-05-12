@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide - DOMES-Acoustics</title>
+    <link rel="stylesheet" href="../../shared.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-bar">
+        <div class="header-left">
+            <a href="../../index.html" class="header-brand" style="text-decoration:none;">
+                <div class="logo-box"></div>
+                DOMES<span>Acoustics</span>
+            </a>
+        </div>
+        <div class="header-right">
+            <div class="btn-group">
+                <div class="file-info">
+                    <span class="file-name" id="fileNameDisplay">User Guide</span>
+                    <span class="file-status" id="statusText">v1.2.0</span>
+                </div>
+            </div>
+            <a href="../../index.html" class="menu-btn" title="Home">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </a>
+            <button class="menu-btn" id="themeToggleBtn" onclick="toggleTheme()"></button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside>
+            <div class="nav-section-title">Signal Tools</div>
+            <a href="../spectrum/index.html" class="nav-btn" id="navSpectrum">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                Spectrum View
+            </a>
+            <a href="../source-localization/index.html" class="nav-btn" id="navAudioSource">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                Source Localization
+            </a>
+            <a href="../physical-simulation/index.html" class="nav-btn" id="navImportData">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Physical Simulation
+            </a>
+            <a href="../platform-deployment/index.html" class="nav-btn" id="navHistory">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H7l5 17"></path></svg>
+                Platform Deployment
+            </a>
+            <a href="../environment-data/index.html" class="nav-btn" id="navLibrary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                Environment Data
+            </a>
+            <a href="../annotation-manager/index.html" class="nav-btn" id="navAnnotations">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5l-3.293 3.293a1 1 0 0 0-.293.707V10l-2 2v8"></path><path d="M15 5l-2.5 2.5"></path><path d="M4 17l1-1 4 4 4-4 1 1"></path></svg>
+                Annotation Manager
+            </a>
+
+            <div class="nav-section-title">AI Assistants</div>
+            <a href="../ai-assistant/index.html" class="nav-btn" id="navAiAssistant">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7c0 1.66 1.34 3 3 3s3-1.34 3-3V5a3 3 0 0 0-3-3z"></path><path d="M19 10a7 7 0 0 1-14 0"></path></svg>
+                AI Assistant
+            </a>
+
+            <div class="nav-section-title">Documents</div>
+            <a href="./index.html" class="nav-btn active" id="navUserGuide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                User Guide
+            </a>
+
+            <div style="margin-top: auto; color: var(--text-sub); font-size: 0.8rem; text-align: center;">v1.2.0</div>
+        </aside>
+
+        <main>
+            <div class="guide-view">
+                <div class="guide-content">
+                    <section id="overview" class="guide-section">
+                        <h1>DOMES-Acoustics 用户指南</h1>
+                        <div class="guide-meta">
+                            <span class="version-badge">v1.2.0</span>
+                            <span class="date-badge">2026-05-11</span>
+                        </div>
+                        
+                        <div class="intro-card">
+                            <div class="intro-icon">🌊</div>
+                            <div class="intro-text">
+                                <h3>专业水声数据分析平台</h3>
+                                <p>DOMES-Acoustics 是一款面向海洋工程与水声学研究的专业软件，提供从信号采集、频谱分析、目标识别到物理仿真的全流程解决方案。</p>
+                            </div>
+                        </div>
+
+                        <h2>核心功能模块</h2>
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h4>频谱视图</h4>
+                                <p>实时 LOFAR 显示，支持 WAV 音频文件的时频分析</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h4>声源定位</h4>
+                                <p>波束形成与 DOA 估计，支持多种阵列配置</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔬</div>
+                                <h4>物理仿真</h4>
+                                <p>声场传播损失计算，射线/简正波/抛物近似模型</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🤖</div>
+                                <h4>AI 助手</h4>
+                                <p>深度学习目标识别，31 类海洋哺乳动物分类</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🗺️</div>
+                                <h4>平台部署</h4>
+                                <p>无人平台轨迹可视化与时空数据分析</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🏷️</div>
+                                <h4>标注管理</h4>
+                                <p>时频标注与 JSON 导出，支持批量处理</p>
+                            </div>
+                        </div>
+
+                        <h2>系统要求</h2>
+                        <table class="spec-table">
+                            <tr>
+                                <td>操作系统</td>
+                                <td>Windows 10/11, macOS 12+, Linux (Ubuntu 20.04+)</td>
+                            </tr>
+                            <tr>
+                                <td>浏览器</td>
+                                <td>Chrome 110+, Firefox 110+, Edge 110+, Safari 16+</td>
+                            </tr>
+                            <tr>
+                                <td>内存</td>
+                                <td>最低 4GB，推荐 8GB 以上</td>
+                            </tr>
+                            <tr>
+                                <td>存储</td>
+                                <td>最低 500MB 可用空间</td>
+                            </tr>
+                            <tr>
+                                <td>音频</td>
+                                <td>支持 Web Audio API 的声卡</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section id="getting-started" class="guide-section">
+                        <h2>快速入门</h2>
+                        
+                        <div class="step-list">
+                            <div class="step-item">
+                                <div class="step-num">1</div>
+                                <div class="step-content">
+                                    <h4>启动软件</h4>
+                                    <p>打开浏览器，访问 DOMES-Acoustics 主页面。系统会自动检测浏览器兼容性。</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">2</div>
+                                <div class="step-content">
+                                    <h4>导入数据</h4>
+                                    <p>点击左侧导航栏的"频谱视图"，通过"Upload WAV"按钮导入音频文件。支持 .wav 格式，采样率不限。</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">3</div>
+                                <div class="step-content">
+                                    <h4>分析信号</h4>
+                                    <p>使用播放控制条播放音频，LOFAR 图会实时滚动显示。鼠标悬停可查看频率和时间信息。</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">4</div>
+                                <div class="step-content">
+                                    <h4>导出结果</h4>
+                                    <p>在标注管理器中框选感兴趣区域，导出 JSON 格式的标注文件，用于后续分析。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tip-box">
+                            <div class="tip-icon">💡</div>
+                            <div class="tip-content">
+                                <strong>提示：</strong>首次使用时建议导入一个短音频文件（< 30秒）熟悉界面操作。大文件（> 100MB）可能需要较长的处理时间。
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="spectrum" class="guide-section">
+                        <h2>频谱视图 (Spectrum View)</h2>
+                        
+                        <h3>功能说明</h3>
+                        <p>频谱视图提供实时的 Low-Frequency Analysis and Recording (LOFAR) 显示，用于观察音频信号的时频特征。</p>
+
+                        <h3>操作指南</h3>
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>操作</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Upload WAV</td>
+                                    <td>导入 .wav 格式的音频文件，支持单声道/立体声</td>
+                                </tr>
+                                <tr>
+                                    <td>Play / Pause</td>
+                                    <td>播放或暂停音频，LOFAR 图同步滚动</td>
+                                </tr>
+                                <tr>
+                                    <td>进度条拖动</td>
+                                    <td>跳转到指定时间点，音频和图像同步更新</td>
+                                </tr>
+                                <tr>
+                                    <td>鼠标悬停</td>
+                                    <td>显示当前位置的频率值（Hz/kHz）和时间戳</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>技术参数</h3>
+                        <ul class="param-list">
+                            <li><strong>FFT 大小：</strong>2048 点</li>
+                            <li><strong>频率上限：</strong>8 kHz（可配置）</li>
+                            <li><strong>颜色映射：</strong>蓝-青-绿-黄-红（经典声学配色）</li>
+                            <li><strong>滚动速度：</strong>2 像素/帧</li>
+                            <li><strong>平滑系数：</strong>0（无平滑，原始响应）</li>
+                        </ul>
+
+                        <div class="warning-box">
+                            <div class="warning-icon">⚠️</div>
+                            <div class="warning-content">
+                                <strong>注意：</strong>大文件解码时会显示"Processing audio..."状态。解码完成后才能播放。如果解码失败，请检查文件是否为标准 WAV 格式。
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="localization" class="guide-section">
+                        <h2>声源定位 (Source Localization)</h2>
+                        
+                        <h3>功能说明</h3>
+                        <p>基于传感器阵列的波束形成技术，估计水下声源的到达方向 (DOA)。支持多种阵列配置和算法。</p>
+
+                        <h3>阵列类型</h3>
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>类型</th>
+                                    <th>描述</th>
+                                    <th>适用场景</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>HLA</td>
+                                    <td>水平线列阵 (Horizontal Linear Array)</td>
+                                    <td>拖曳阵、海底阵</td>
+                                </tr>
+                                <tr>
+                                    <td>VLA</td>
+                                    <td>垂直线列阵 (Vertical Linear Array)</td>
+                                    <td>深海探测、潜标</td>
+                                </tr>
+                                <tr>
+                                    <td>Circular</td>
+                                    <td>圆环阵 (Circular Array)</td>
+                                    <td>全方位覆盖、浮标</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>DOA 算法</h3>
+                        <div class="algo-cards">
+                            <div class="algo-card">
+                                <h4>Bartlett</h4>
+                                <p>常规波束形成器，计算简单，鲁棒性好，分辨率较低。</p>
+                                <span class="algo-tag">经典</span>
+                            </div>
+                            <div class="algo-card">
+                                <h4>MVDR (Capon)</h4>
+                                <p>最小方差无失真响应，自适应抑制干扰，分辨率中等。</p>
+                                <span class="algo-tag">自适应</span>
+                            </div>
+                            <div class="algo-card">
+                                <h4>MUSIC</h4>
+                                <p>多重信号分类，超分辨率算法，可分辨多个信号源。</p>
+                                <span class="algo-tag">高分辨</span>
+                            </div>
+                        </div>
+
+                        <h3>配置参数</h3>
+                        <ul class="param-list">
+                            <li><strong>阵元数量：</strong>4-256 个，典型值 16</li>
+                            <li><strong>阵元间距：</strong>0.001-10 m，典型值 0.05 m</li>
+                            <li><strong>声速：</strong>1000-1600 m/s，典型值 1500 m/s</li>
+                            <li><strong>频率带：</strong>1 Hz - 采样率/2</li>
+                            <li><strong>积分时间：</strong>0.1-10 s</li>
+                            <li><strong>波束数量：</strong>10-720，典型值 360</li>
+                        </ul>
+                    </section>
+
+                    <section id="simulation" class="guide-section">
+                        <h2>物理仿真 (Physical Simulation)</h2>
+                        
+                        <h3>功能说明</h3>
+                        <p>计算水下声场的传播损失 (Transmission Loss, TL)，模拟声波在海洋环境中的传播过程。</p>
+
+                        <h3>传播模型</h3>
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>模型</th>
+                                    <th>原理</th>
+                                    <th>适用条件</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>射线模型</td>
+                                    <td>几何声学近似，追踪声线路径</td>
+                                    <td>高频 (> 500 Hz)，距离远</td>
+                                </tr>
+                                <tr>
+                                    <td>简正波</td>
+                                    <td>波动方程本征函数展开</td>
+                                    <td>低频 (< 500 Hz)，水平不变</td>
+                                </tr>
+                                <tr>
+                                    <td>抛物近似</td>
+                                    <td>抛物方程步进求解</td>
+                                    <td>复杂环境，水平变化</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>环境参数</h3>
+                        <ul class="param-list">
+                            <li><strong>声源深度：</strong>0 - 海底深度</li>
+                            <li><strong>声源频率：</strong>1 Hz - 100 kHz</li>
+                            <li><strong>声源级：</strong>50 - 230 dB re 1μPa</li>
+                            <li><strong>最大距离：</strong>1 - 1000 km</li>
+                            <li><strong>海底深度：</strong>10 - 11000 m</li>
+                            <li><strong>深度网格：</strong>0.1 - 10 m</li>
+                        </ul>
+
+                        <h3>海底类型</h3>
+                        <div class="seabed-types">
+                            <div class="seabed-item">
+                                <div class="seabed-color" style="background: #8B7355;"></div>
+                                <span>淤泥 (Silt)</span>
+                                <small>声速 1500 m/s，密度 1.4 g/cm³</small>
+                            </div>
+                            <div class="seabed-item">
+                                <div class="seabed-color" style="background: #C2B280;"></div>
+                                <span>沙 (Sand)</span>
+                                <small>声速 1650 m/s，密度 1.6 g/cm³</small>
+                            </div>
+                            <div class="seabed-item">
+                                <div class="seabed-color" style="background: #A0522D;"></div>
+                                <span>粘土 (Clay)</span>
+                                <small>声速 1550 m/s，密度 1.5 g/cm³</small>
+                            </div>
+                        </div>
+
+                        <h3>可视化输出</h3>
+                        <ul class="param-list">
+                            <li><strong>传播损失热力图：</strong>距离-深度二维分布</li>
+                            <li><strong>声速剖面图：</strong>深度方向的声速变化</li>
+                            <li><strong>TL 曲线图：</strong>固定深度的传播损失随距离变化</li>
+                        </ul>
+                    </section>
+
+                    <section id="ai-assistant" class="guide-section">
+                        <h2>AI 助手 (AI Assistant)</h2>
+                        
+                        <h3>功能说明</h3>
+                        <p>基于 SeaFusionNet-V 深度学习模型，对水声信号进行自动目标识别与分类。</p>
+
+                        <h3>识别类别</h3>
+                        <div class="species-grid">
+                            <div class="species-category">
+                                <h4>鲸类 (Cetaceans)</h4>
+                                <ul>
+                                    <li>抹香鲸 (Sperm Whale)</li>
+                                    <li>座头鲸 (Humpback Whale)</li>
+                                    <li>小须鲸 (Minke Whale)</li>
+                                    <li>蓝鲸/长须鲸 (Fin Whale)</li>
+                                    <li>露脊鲸 (Right Whale)</li>
+                                    <li>弓头鲸 (Bowhead Whale)</li>
+                                    <li>白鲸 (Beluga)</li>
+                                    <li>独角鲸 (Narwhal)</li>
+                                    <li>虎鲸 (Killer Whale)</li>
+                                    <li>伪虎鲸 (False Killer Whale)</li>
+                                </ul>
+                            </div>
+                            <div class="species-category">
+                                <h4>海豚类 (Dolphins)</h4>
+                                <ul>
+                                    <li>宽吻海豚 (Bottlenose Dolphin)</li>
+                                    <li>普通海豚 (Common Dolphin)</li>
+                                    <li>飞旋海豚 (Spinner Dolphin)</li>
+                                    <li>斑海豚 (Spotted Dolphin)</li>
+                                    <li>条纹海豚 (Striped Dolphin)</li>
+                                    <li>瑞氏海豚 (Risso's Dolphin)</li>
+                                    <li>领航鲸 (Pilot Whale)</li>
+                                    <li>瓜头鲸 (Melon-headed Whale)</li>
+                                    <li>弗氏海豚 (Fraser's Dolphin)</li>
+                                    <li>糙齿海豚 (Rough-toothed Dolphin)</li>
+                                </ul>
+                            </div>
+                            <div class="species-category">
+                                <h4>海豹类 (Pinnipeds)</h4>
+                                <ul>
+                                    <li>海象 (Walrus)</li>
+                                    <li>髯海豹 (Bearded Seal)</li>
+                                    <li>竖琴海豹 (Harp Seal)</li>
+                                    <li>豹海豹 (Leopard Seal)</li>
+                                    <li>罗斯海豹 (Ross Seal)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>使用流程</h3>
+                        <div class="step-list">
+                            <div class="step-item">
+                                <div class="step-num">1</div>
+                                <div class="step-content">
+                                    <h4>导入音频</h4>
+                                    <p>点击"导入音频数据"，选择多个 WAV 文件（支持批量上传）</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">2</div>
+                                <div class="step-content">
+                                    <h4>选择文件</h4>
+                                    <p>勾选需要识别的文件，点击"开始批量识别"</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">3</div>
+                                <div class="step-content">
+                                    <h4>查看结果</h4>
+                                    <p>识别完成后显示目标类别和置信度，支持导出报告</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tip-box">
+                            <div class="tip-icon">💡</div>
+                            <div class="tip-content">
+                                <strong>建议：</strong>为获得最佳识别效果，建议使用信噪比 > 10 dB、时长 > 5 秒的音频片段。模型对 50-500 Hz 频段的鲸类叫声识别率最高。
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="deployment" class="guide-section">
+                        <h2>平台部署 (Platform Deployment)</h2>
+                        
+                        <h3>功能说明</h3>
+                        <p>可视化海洋无人平台（浮标、潜标、AUV、USV 等）的空间轨迹与部署位置。</p>
+
+                        <h3>支持的数据格式</h3>
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>格式</th>
+                                    <th>扩展名</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Excel</td>
+                                    <td>.xlsx, .xls</td>
+                                    <td>Microsoft Excel 格式，支持多 Sheet</td>
+                                </tr>
+                                <tr>
+                                    <td>CSV</td>
+                                    <td>.csv</td>
+                                    <td>逗号分隔文本，通用格式</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>必需字段</h3>
+                        <ul class="param-list">
+                            <li><strong>平台 ID：</strong>buoy_id / platform_id / id</li>
+                            <li><strong>经度：</strong>buoy_lon / longitude / lon（单位：度）</li>
+                            <li><strong>纬度：</strong>buoy_lat / latitude / lat（单位：度）</li>
+                        </ul>
+
+                        <h3>CSV 示例</h3>
+                        <div class="code-block">
+<pre>buoy_id,buoy_lon,buoy_lat,timestamp
+A1,121.4737,31.2304,2026-01-15T08:00:00Z
+A1,121.4837,31.2404,2026-01-15T09:00:00Z
+A1,121.4937,31.2504,2026-01-15T10:00:00Z
+B2,121.5037,31.2204,2026-01-15T08:00:00Z
+B2,121.5137,31.2104,2026-01-15T09:00:00Z</pre>
+                        </div>
+
+                        <h3>交互操作</h3>
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>操作</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>鼠标滚轮</td>
+                                    <td>缩放 X 轴（横向）</td>
+                                </tr>
+                                <tr>
+                                    <td>Shift + 滚轮</td>
+                                    <td>缩放 Y 轴（纵向）</td>
+                                </tr>
+                                <tr>
+                                    <td>滑块拖动</td>
+                                    <td>独立控制 X/Y 轴缩放范围</td>
+                                </tr>
+                                <tr>
+                                    <td>Reset View</td>
+                                    <td>恢复初始视图范围</td>
+                                </tr>
+                                <tr>
+                                    <td>Snapshot</td>
+                                    <td>导出 PNG 格式图像（2x 分辨率）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section id="environment" class="guide-section">
+                        <h2>环境数据 (Environment Data)</h2>
+                        
+                        <h3>功能说明</h3>
+                        <p>浏览和管理已知的水声目标特征库，包括各类船舶、海洋生物和环境噪声的标准特征。</p>
+
+                        <h3>数据库内容</h3>
+                        <div class="env-categories">
+                            <div class="env-card">
+                                <div class="env-icon">🚢</div>
+                                <h4>船舶噪声</h4>
+                                <ul>
+                                    <li>商船 (Merchant Vessels)</li>
+                                    <li>渔船 (Fishing Boats)</li>
+                                    <li>游艇 (Yachts)</li>
+                                </ul>
+                            </div>
+                            <div class="env-card">
+                                <div class="env-icon">🐋</div>
+                                <h4>海洋生物</h4>
+                                <ul>
+                                    <li>齿鲸 (Toothed Whales)</li>
+                                    <li>须鲸 (Baleen Whales)</li>
+                                    <li>海豚 (Dolphins)</li>
+                                    <li>海豹 (Seals)</li>
+                                    <li>海狮 (Sea Lions)</li>
+                                </ul>
+                            </div>
+                            <div class="env-card">
+                                <div class="env-icon">🌊</div>
+                                <h4>环境噪声</h4>
+                                <ul>
+                                    <li>雨噪声 (Rain Noise)</li>
+                                    <li>风成噪声 (Wind Noise)</li>
+                                    <li>热噪声 (Thermal Noise)</li>
+                                    <li>冰噪声 (Ice Noise)</li>
+                                    <li>生物 chorus (Biological Chorus)</li>
+                                </ul>
+                            </div>
+                            <div class="env-card">
+                                <div class="env-icon">🔧</div>
+                                <h4>人工声源</h4>
+                                <ul>
+                                    <li>气枪 (Air Guns)</li>
+                                    <li>声纳 (Sonars)</li>
+                                    <li>水下施工 (Underwater Construction)</li>
+                                    <li>地震勘探 (Seismic Survey)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>特征参数</h3>
+                        <p>每个目标条目包含以下特征信息：</p>
+                        <ul class="param-list">
+                            <li><strong>频谱特征：</strong>主频、谐波结构、带宽</li>
+                            <li><strong>时域特征：</strong>脉冲重复周期、持续时间</li>
+                            <li><strong>空间特征：</strong>传播损失模型、指向性</li>
+                            <li><strong>季节分布：</strong>出现概率随月份变化</li>
+                            <li><strong>地理分布：</strong>典型出现海域</li>
+                        </ul>
+                    </section>
+
+                    <section id="annotation" class="guide-section">
+                        <h2>标注管理 (Annotation Manager)</h2>
+                        
+                        <h3>功能说明</h3>
+                        <p>对水声信号的时频图进行交互式标注，支持框选区域并导出结构化标注数据。</p>
+
+                        <h3>标注流程</h3>
+                        <div class="step-list">
+                            <div class="step-item">
+                                <div class="step-num">1</div>
+                                <div class="step-content">
+                                    <h4>导入音频</h4>
+                                    <p>点击"IMPORT WAV"导入音频文件，支持批量导入多个文件</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">2</div>
+                                <div class="step-content">
+                                    <h4>选择文件</h4>
+                                    <p>在左侧文件列表中点击要标注的文件，等待 LOFAR 图渲染完成</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">3</div>
+                                <div class="step-content">
+                                    <h4>框选标注</h4>
+                                    <p>在频谱图上按住鼠标左键拖动，框选感兴趣的区域</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">4</div>
+                                <div class="step-content">
+                                    <h4>修改类别</h4>
+                                    <p>在表格中选择标注的类别（Vessel/Whale/Mechanical/Ambient）</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">5</div>
+                                <div class="step-content">
+                                    <h4>导出数据</h4>
+                                    <p>点击"SAVE & DOWNLOAD"导出 JSON 格式的标注文件</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>标注属性</h3>
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>属性</th>
+                                    <th>说明</th>
+                                    <th>单位</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>时间起点</td>
+                                    <td>标注区域开始时间</td>
+                                    <td>秒 (s)</td>
+                                </tr>
+                                <tr>
+                                    <td>时间终点</td>
+                                    <td>标注区域结束时间</td>
+                                    <td>秒 (s)</td>
+                                </tr>
+                                <tr>
+                                    <td>频率下限</td>
+                                    <td>标注区域最低频率</td>
+                                    <td>赫兹 (Hz)</td>
+                                </tr>
+                                <tr>
+                                    <td>频率上限</td>
+                                    <td>标注区域最高频率</td>
+                                    <td>赫兹 (Hz)</td>
+                                </tr>
+                                <tr>
+                                    <td>持续时间</td>
+                                    <td>时间终点 - 时间起点</td>
+                                    <td>秒 (s)</td>
+                                </tr>
+                                <tr>
+                                    <td>类别标签</td>
+                                    <td>目标类型分类</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>导出格式 (JSON)</h3>
+                        <div class="code-block">
+<pre>[
+  {
+    "category": "Vessel",
+    "timeStart": 12.50,
+    "timeEnd": 18.30,
+    "freqLow": 150,
+    "freqHigh": 800,
+    "duration": 5.80
+  },
+  {
+    "category": "Whale",
+    "timeStart": 25.00,
+    "timeEnd": 35.00,
+    "freqLow": 50,
+    "freqHigh": 500,
+    "duration": 10.00
+  }
+]</pre>
+                        </div>
+
+                        <div class="warning-box">
+                            <div class="warning-icon">⚠️</div>
+                            <div class="warning-content">
+                                <strong>注意：</strong>标注操作依赖精确的像素坐标映射。如果窗口大小发生变化，已创建的标注框位置可能出现偏差。建议在完成所有标注后再调整窗口大小。
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="data-format" class="guide-section">
+                        <h2>数据格式规范</h2>
+                        
+                        <h3>音频文件要求</h3>
+                        <table class="spec-table">
+                            <tr>
+                                <td>格式</td>
+                                <td>WAV (RIFF/WAVE)</td>
+                            </tr>
+                            <tr>
+                                <td>编码</td>
+                                <td>PCM 16-bit 或 24-bit</td>
+                            </tr>
+                            <tr>
+                                <td>声道</td>
+                                <td>单声道 (Mono) 或立体声 (Stereo)</td>
+                            </tr>
+                            <tr>
+                                <td>采样率</td>
+                                <td>任意（推荐 ≥ 16 kHz）</td>
+                            </tr>
+                            <tr>
+                                <td>最大时长</td>
+                                <td>无限制（大文件处理时间较长）</td>
+                            </tr>
+                        </table>
+
+                        <h3>轨迹数据要求</h3>
+                        <p>平台部署模块支持以下字段名（自动识别）：</p>
+                        <div class="code-block">
+<pre>// 平台标识
+buoy_id, platform_id, id, device_id
+
+// 经度（度）
+buoy_lon, longitude, lon, lng, x
+
+// 纬度（度）
+buoy_lat, latitude, lat, y
+
+// 时间戳（可选）
+timestamp, time, datetime, date</pre>
+                        </div>
+
+                        <h3>标注数据格式</h3>
+                        <p>标注管理器导出的 JSON 文件包含以下字段：</p>
+                        <div class="code-block">
+<pre>{
+  "category": "Vessel",      // 类别标签
+  "timeStart": 12.50,      // 开始时间 (s)
+  "timeEnd": 18.30,        // 结束时间 (s)
+  "freqLow": 150,          // 最低频率 (Hz)
+  "freqHigh": 800,         // 最高频率 (Hz)
+  "duration": 5.80         // 持续时间 (s)
+}</pre>
+                        </div>
+                    </section>
+
+                    <section id="changelog" class="guide-section">
+                        <h2>更新日志</h2>
+                        
+                        <div class="changelog-list">
+                            <div class="changelog-item">
+                                <div class="changelog-version">v1.2.0</div>
+                                <div class="changelog-date">2026-05-11</div>
+                                <ul>
+                                    <li>新增 AI 助手模块，支持 31 类海洋哺乳动物识别</li>
+                                    <li>新增平台部署轨迹可视化功能</li>
+                                    <li>优化标注管理器，支持批量文件处理</li>
+                                    <li>新增亮色主题切换</li>
+                                    <li>修复大文件 WAV 解析内存泄漏问题</li>
+                                </ul>
+                            </div>
+                            <div class="changelog-item">
+                                <div class="changelog-version">v1.1.0</div>
+                                <div class="changelog-date">2026-03-15</div>
+                                <ul>
+                                    <li>新增物理仿真模块（射线/简正波/抛物近似）</li>
+                                    <li>新增声源定位 DOA 估计功能</li>
+                                    <li>支持多种阵列配置和波束形成算法</li>
+                                    <li>优化频谱视图性能（WebGL 加速）</li>
+                                </ul>
+                            </div>
+                            <div class="changelog-item">
+                                <div class="changelog-version">v1.0.0</div>
+                                <div class="changelog-date">2026-01-20</div>
+                                <ul>
+                                    <li>初始版本发布</li>
+                                    <li>频谱视图 LOFAR 显示</li>
+                                    <li>基础音频播放控制</li>
+                                    <li>标注管理功能</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="guide-footer">
+                        <p>DOMES-Acoustics v1.2.0 | 海洋环境感知技术实验室</p>
+                        <p>如有问题请联系技术支持：support@domes-acoustics.org</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

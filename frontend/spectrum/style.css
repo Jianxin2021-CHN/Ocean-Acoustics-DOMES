@@ -1,0 +1,102 @@
+/* ============================================
+   Spectrum View Styles
+   ============================================ */
+
+.spectrum-view {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.visualizer-card {
+    flex: 1;
+    background-color: var(--lofar-bg);
+    border-radius: var(--radius-box);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-card);
+    border: 4px solid var(--bg-card);
+}
+
+.visualizer-card canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#lofarCanvas { z-index: 1; }
+#overlayCanvas { z-index: 2; pointer-events: none; }
+
+#interactionLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    cursor: crosshair;
+}
+
+.player-bar {
+    background-color: var(--bg-card);
+    padding: 16px 24px;
+    border-radius: var(--radius-btn);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-card);
+    flex-shrink: 0;
+}
+
+.time-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    width: 50px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: var(--text-main);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-top: -6px;
+    transition: transform 0.1s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+    transform: scale(1.2);
+    background: var(--accent-primary);
+}
+
+.hover-info {
+    position: fixed;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--bg-card);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: var(--text-main);
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+    box-shadow: var(--shadow-card);
+    font-family: 'JetBrains Mono', monospace;
+}

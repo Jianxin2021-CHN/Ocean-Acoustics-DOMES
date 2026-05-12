@@ -1,37 +1,42 @@
-# Nautilus: A Foundation Model for Ocean Acoustics
+## 
+
+## Ocean-Acoustics-DOMES
 
 ## Overview
 
-**Nautilus** is a foundation model for ocean acoustic analysis, with a primary focus on **vocalization identification of marine mammals**. It aims to rapidly filter high-value marine mammal acoustic signals from large-scale underwater sound datasets.
-
-Nautilus supports a wide range of downstream tasks, including:
+This project provides a high-performance web-based platform for underwater acoustic analysis. By efficiently distilling high-value marine mammal signals from massive datasets, it offers an end-to-end pipeline from data upload to real-time AI-driven detection. The platform supports a versatile range of downstream applications:
 
 - Fine-grained acoustic target classification
 
 - Underwater acoustic source localization and tracking
 
-- Biological species/population abundance estimation
+- Abundance estimation for Biological species and populations
 
 - Distributed cooperative sensing by ocean mobile platforms
 
-This project contributes to the protection of global marine biodiversity and promotes sustainable development and utilization of marine biological resources through the power of underwater acoustic big data.
+This project contributes to the protection of global marine biodiversity and promotes the sustainable development and utilization of marine biological resources through the power of underwater acoustic big data.
 
-## News
+## Key Features
 
-- 2025.06.29 :tada:The project has been approved and funded by the Frontiers Science Center for Deep Ocean Multispheres and Earth System, Ocean University of China.
+The repository serves as a reference implementation. Constrained by data sharing agreements, we have only open-sourced the complete responsive frontend software design alongside essential backend components for FastAPI integration. The platform currently supports several core functionalities: Spectrum View, Source Localization, Physical Simulation, AI Assistant, Platform Deployment, Environment Data, User Guide, Annotation Manager.
 
-## Model
+The software is built with a modular design emphasizing high cohesion and low coupling. Future functionalities will be further refined and expanded based on specific requirements.
 
-:construction: Project in Progress.
+## Quick Start
 
-## Software
+##### 1. Backend Setup
 
-:construction: Software is currently in active development.
+```bash
+cd backend
+pip install -r requirements.txt
+
+python main.py
+```
+
+##### 2. Frontend Setup
+
+Simply open `index.html` in a web browser to launch the interface.
 
 ## Acknowledge
 
-This project is supported by AI+ Ocean Doctoral Innovative Talents Support Program of Frontiers Science Center for Deep Ocean Multispheres and Earth System, Ocean University of China (Grant No.202572013).
-
-## Citation
-
-
+This project is supported in part by the Fundamental Research Funds for the Central Universities (No.202572013) from the AI+ Ocean Doctoral Innovative Talents Support Program of Frontiers Science Center for Deep Ocean Multispheres and Earth System, Ocean University of China.

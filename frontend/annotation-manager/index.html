@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annotation Manager - DOMES-Acoustics</title>
+    <link rel="stylesheet" href="../../shared.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-bar">
+        <div class="header-left">
+            <a href="../../index.html" class="header-brand" style="text-decoration:none;">
+                <div class="logo-box"></div>
+                DOMES<span>Acoustics</span>
+            </a>
+        </div>
+        <div class="header-right">
+            <div class="btn-group">
+                <div class="file-info">
+                    <span class="file-name" id="fileNameDisplay">No File Selected</span>
+                    <span class="file-status" id="statusText">Ready</span>
+                </div>
+            </div>
+            <a href="../../index.html" class="menu-btn" title="Home">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </a>
+            <button class="menu-btn" id="themeToggleBtn" onclick="toggleTheme()"></button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside>
+            <div class="nav-section-title">Signal Tools</div>
+            <a href="../spectrum/index.html" class="nav-btn" id="navSpectrum">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                Spectrum View
+            </a>
+            <a href="../source-localization/index.html" class="nav-btn" id="navAudioSource">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                Source Localization
+            </a>
+            <a href="../physical-simulation/index.html" class="nav-btn" id="navImportData">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Physical Simulation
+            </a>
+            <a href="../platform-deployment/index.html" class="nav-btn" id="navHistory">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H7l5 17"></path></svg>
+                Platform Deployment
+            </a>
+            <a href="../environment-data/index.html" class="nav-btn" id="navLibrary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                Environment Data
+            </a>
+            <a href="./index.html" class="nav-btn active" id="navAnnotations">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5l-3.293 3.293a1 1 0 0 0-.293.707V10l-2 2v8"></path><path d="M15 5l-2.5 2.5"></path><path d="M4 17l1-1 4 4 4-4 1 1"></path></svg>
+                Annotation Manager
+            </a>
+
+            <div class="nav-section-title">AI Assistants</div>
+            <a href="../ai-assistant/index.html" class="nav-btn" id="navAiAssistant">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7c0 1.66 1.34 3 3 3s3-1.34 3-3V5a3 3 0 0 0-3-3z"></path><path d="M19 10a7 7 0 0 1-14 0"></path></svg>
+                AI Assistant
+            </a>
+
+            <div class="nav-section-title">Documents</div>
+            <a href="../user-guide/index.html" class="nav-btn" id="navUserGuide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                User Guide
+            </a>
+
+            <div style="margin-top: auto; color: var(--text-sub); font-size: 0.8rem; text-align: center;">v1.2.0</div>
+        </aside>
+
+        <main>
+            <div class="anno-view-root">
+                <div class="anno-layout">
+                    
+                    <!-- Left Sidebar -->
+                    <aside class="anno-sidebar">
+                        <div class="sidebar-header">
+                            <div class="sidebar-title">Acoustic Assets</div>
+                            <button class="btn-solid-primary" onclick="document.getElementById('anno_file_input').click()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                IMPORT WAV
+                            </button>
+                            <input type="file" id="anno_file_input" multiple accept=".wav" style="display:none" onchange="handleAnnoBatchUpload(event)">
+                        </div>
+                        
+                        <div id="anno_file_list" class="anno-file-queue">
+                            <div class="empty-files">No files found</div>
+                        </div>
+                    </aside>
+
+                    <!-- Main Workspace -->
+                    <div class="anno-main-workspace">
+                        
+                        <!-- Visualizer -->
+                        <div class="anno-visualizer-card">
+                            <div class="anno-vis-frame" id="anno_vis_frame">
+                                <canvas id="anno_lofar_canvas"></canvas>
+                                <canvas id="anno_mark_layer"></canvas>
+                                <div id="anno_selector_box"></div>
+                                
+                                <!-- Loading Overlay -->
+                                <div id="anno_loading" class="loading-overlay">
+                                    <div class="radar-scan"></div>
+                                    <div class="loading-text">FFT RENDERING</div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Info Bar -->
+                            <div class="anno-info-bar">
+                                <div id="anno_status_info" class="anno-telemetry-card">
+                                    <span>SYSTEM STANDBY</span>
+                                </div>
+                                <div class="anno-actions">
+                                    <button class="btn btn-secondary" onclick="clearAllAnnos()">RESET</button>
+                                    <button class="btn-solid-primary" onclick="exportAnnoData()">SAVE & DOWNLOAD</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Table -->
+                        <div class="anno-data-section">
+                            <div class="table-header">ANNOTATION DATABASE</div>
+                            <div class="table-body">
+                                <table class="anno-pro-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Time Range</th>
+                                            <th>Frequency</th>
+                                            <th>Duration</th>
+                                            <th>Manage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="anno_table_body">
+                                        <!-- JS populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

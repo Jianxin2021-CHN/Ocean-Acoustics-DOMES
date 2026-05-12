@@ -1,0 +1,263 @@
+/* ============================================
+   Platform Deployment (History/Trajectory) Styles
+   ============================================ */
+
+.history-view-container {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-main);
+    overflow: hidden;
+}
+
+.history-layout {
+    display: flex;
+    height: 100%;
+}
+
+/* --- Sidebar --- */
+.history-sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.section-hint {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+.minimal-import {
+    background: var(--accent-primary);
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: var(--shadow-glow);
+}
+
+.minimal-import:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.sidebar-bottom {
+    margin-top: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.history-select {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-main);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.buoy-legend-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.legend-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 4px solid transparent;
+    transition: background 0.2s;
+}
+
+.legend-card:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* --- Main Area --- */
+.history-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    overflow: hidden;
+}
+
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.view-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-heading);
+}
+
+.file-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: var(--bg-card);
+    color: var(--text-sub);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin-top: 5px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.view-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-main);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+}
+
+.btn-export {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-main);
+    border: none;
+    padding: 0 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-export:hover {
+    background: var(--accent-primary);
+}
+
+/* --- Chart Area --- */
+.chart-canvas-wrapper {
+    flex: 1;
+    position: relative;
+    background: radial-gradient(circle at center, #1e1e22 0%, #111113 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+#trajectoryChart {
+    width: 100%;
+    height: 100%;
+}
+
+.empty-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #444;
+    pointer-events: none;
+}
+
+.radar-scan {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--accent-primary);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    position: relative;
+    animation: radar-pulse 2s infinite linear;
+}
+
+@keyframes radar-pulse {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* --- Light Theme Adjustments --- */
+body.light-theme .history-sidebar {
+    border-right-color: rgba(0,0,0,0.05);
+}
+
+body.light-theme .history-select {
+    border-color: rgba(0,0,0,0.1);
+    color: var(--text-main);
+}
+
+body.light-theme .chart-canvas-wrapper {
+    background: radial-gradient(circle at center, #f5f5f7 0%, #e8e8ed 100%);
+    border-color: rgba(0,0,0,0.05);
+}
+
+body.light-theme .empty-overlay {
+    color: #bbb;
+}
+
+body.light-theme .file-badge {
+    border-color: rgba(0,0,0,0.05);
+}
+
+body.light-theme .btn-icon {
+    border-color: rgba(0,0,0,0.1);
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+    .history-layout {
+        flex-direction: column;
+    }
+    
+    .history-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        max-height: 200px;
+    }
+    
+    .buoy-legend-list {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+    }
+    
+    .legend-card {
+        white-space: nowrap;
+        min-width: 120px;
+    }
+}

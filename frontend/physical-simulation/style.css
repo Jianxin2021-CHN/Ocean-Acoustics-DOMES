@@ -1,0 +1,256 @@
+/* ============================================
+   Physical Simulation (Acoustic Propagation) Styles
+   ============================================ */
+
+.simulation-view {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+.acoustic-layout {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    gap: 25px;
+    height: calc(100vh - 120px);
+    width: 100%;
+}
+
+/* --- Left: Visualization Area --- */
+.acoustic-visualization {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-box);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+}
+
+.vis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #444;
+    background-color: #3C3C41;
+    border-top-left-radius: var(--radius-box);
+    border-top-right-radius: var(--radius-box);
+}
+
+.vis-tabs {
+    display: flex;
+    padding-top: 10px;
+}
+
+.vis-tab {
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    color: var(--text-sub);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s, border-bottom 0.3s;
+    font-size: 0.9rem;
+}
+
+.vis-tab:hover { color: var(--text-main); }
+.vis-tab.active {
+    color: var(--accent-primary);
+    border-bottom: 3px solid var(--accent-primary);
+    font-weight: bold;
+}
+
+.vis-plot-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lofar-bg);
+    border-radius: 0 0 var(--radius-box) var(--radius-box);
+    position: relative;
+    overflow: hidden;
+}
+
+.plot-placeholder {
+    text-align: center;
+    color: var(--text-sub);
+}
+
+.plot-placeholder h2 {
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.plot-placeholder p {
+    font-size: 0.9rem;
+}
+
+#simulationCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Toolbox Dropdown --- */
+.toolbox-dropdown-container {
+    position: relative;
+    padding: 10px 0;
+}
+
+.toolbox-trigger-btn {
+    padding: 8px 15px;
+    background-color: var(--accent-primary);
+    color: var(--text-main);
+    border: none;
+    border-radius: var(--radius-btn);
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.toolbox-trigger-btn:hover { background-color: var(--accent-hover); }
+
+.toolbox-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 10;
+    margin-top: 5px;
+    min-width: 180px;
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    box-shadow: var(--shadow-card);
+    padding: 5px;
+    display: none;
+    flex-direction: column;
+}
+
+.toolbox-dropdown-container.active .toolbox-menu { display: flex; }
+
+.menu-item {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 10px 15px;
+    color: var(--text-main);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    font-size: 0.85rem;
+}
+
+.menu-item:hover {
+    background-color: var(--bg-hover);
+    color: var(--accent-primary);
+}
+
+.menu-separator {
+    height: 1px;
+    background-color: #444;
+    margin: 5px 0;
+}
+
+/* --- Right: Control Panel --- */
+.acoustic-controls {
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.control-section-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-box);
+    margin-bottom: 15px;
+    box-shadow: var(--shadow-card);
+    padding: 0;
+    overflow: hidden;
+}
+
+.section-title {
+    font-weight: bold;
+    color: var(--accent-primary);
+    padding: 15px 20px;
+    border-bottom: 1px solid #3C3C41;
+    font-size: 1.1em;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-title {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: var(--text-sub);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.card-content input,
+.card-content select,
+.model-select {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #3C3C41;
+    color: var(--text-main);
+    margin-bottom: 0;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+}
+
+.card-content input:focus,
+.card-content select:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+}
+
+.model-select {
+    margin-bottom: 10px;
+}
+
+/* --- Action Buttons --- */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.primary-action-btn,
+.secondary-action-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--radius-btn);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    flex-grow: 1;
+    font-size: 0.9rem;
+}
+
+.primary-action-btn {
+    background-color: var(--accent-primary);
+    color: var(--text-main);
+    box-shadow: var(--shadow-glow);
+}
+
+.primary-action-btn:hover { background-color: var(--accent-hover); }
+
+.secondary-action-btn {
+    background-color: #555;
+    color: var(--text-main);
+}
+
+.secondary-action-btn:hover { background-color: #777; }
+
+/* --- Scrollbar for controls --- */
+.acoustic-controls::-webkit-scrollbar { width: 6px; }
+.acoustic-controls::-webkit-scrollbar-thumb { background-color: #555; border-radius: 3px; }

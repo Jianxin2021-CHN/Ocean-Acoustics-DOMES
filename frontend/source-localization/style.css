@@ -1,0 +1,318 @@
+/* ============================================
+   Source Localization (Bearing View) Styles
+   ============================================ */
+
+.bearing-view {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bearing-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+}
+
+/* --- Left: Display Area --- */
+.display-area {
+    background-color: transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 300px;
+}
+
+.bearing-main-view {
+    flex: 1;
+    background-color: var(--lofar-bg);
+    border-radius: var(--radius-box);
+    box-shadow: var(--shadow-card);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+#bearingCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bearing-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.bearing-value {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    text-shadow: 0 0 30px rgba(112, 71, 235, 0.5);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.bearing-label {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-top: 5px;
+}
+
+.aux-windows-container {
+    display: flex;
+    gap: 20px;
+    height: 280px;
+    flex-shrink: 0;
+}
+
+.aux-window {
+    flex: 1;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-box);
+    box-shadow: var(--shadow-card);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.aux-title {
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+    flex-shrink: 0;
+}
+
+.aux-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+#beamPatternCanvas {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+}
+
+/* Metrics */
+.metrics-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.metric-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: 500;
+}
+
+.metric-value {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.confidence-bar {
+    width: 100px;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: var(--accent-primary);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+/* --- Right: Control Panel --- */
+.control-panel {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-box);
+    box-shadow: var(--shadow-card);
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+    max-height: calc(100vh - 140px);
+}
+
+.control-panel h3 {
+    color: var(--text-heading);
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.control-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.control-panel select,
+.control-panel input[type="number"],
+.control-panel input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--bg-sidebar);
+    border: 1px solid var(--bg-hover);
+    color: var(--text-main);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.control-panel select:focus,
+.control-panel input[type="number"]:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+}
+
+.control-panel input[type="text"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Frequency Band Input */
+.control-group.freq-band-group div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--bg-hover);
+    border-radius: 8px;
+    background-color: var(--bg-sidebar);
+    overflow: hidden;
+}
+
+.control-group.freq-band-group input {
+    width: 100% !important;
+    margin-left: 0 !important;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    text-align: center;
+    flex-grow: 1;
+    color: var(--text-main);
+}
+
+.freq-input-unit {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--bg-hover);
+    flex: 1;
+}
+
+.freq-input-unit:last-of-type {
+    border-right: none;
+}
+
+.freq-unit-label {
+    color: var(--text-sub);
+    padding: 0 10px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.freq-separator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-sub);
+    padding: 0 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    flex-shrink: 0;
+    height: 100%;
+}
+
+/* Status Indicator */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-top: 15px;
+    padding: 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+}
+
+.status-light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+    transition: background 0.3s;
+}
+
+.status-light.online {
+    background: #00E096;
+    box-shadow: 0 0 8px #00E096;
+}
+
+.status-light.running {
+    background: #FFAB00;
+    box-shadow: 0 0 8px #FFAB00;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Scrollbar for control panel */
+.control-panel::-webkit-scrollbar { width: 6px; }
+.control-panel::-webkit-scrollbar-thumb { background-color: #555; border-radius: 3px; }
